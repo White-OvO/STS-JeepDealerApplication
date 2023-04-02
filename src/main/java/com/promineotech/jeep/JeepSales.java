@@ -1,4 +1,4 @@
-package com.promineotech.jeep;
+/*package com.promineotech.jeep;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,8 +20,27 @@ public class JeepSales {
 
 public static void main(String[] args) {
 	SpringApplication.run(JeepSales.class, args); //makes a call to springspplicaion, starts main boot
-}   //Note; JeepSales.class and args are parameters.
+}                                         //Note; JeepSales.class and args are parameters.
 
 
+
+}
+
+*/
+
+
+
+package com.promineotech.jeep;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication 
+public class JeepSales {
+
+  public static void main(String[] args) {
+  SpringApplication.run(JeepSales.class, args);
+
+  }
 
 }
