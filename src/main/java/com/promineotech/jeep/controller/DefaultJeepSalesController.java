@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 //@RestController 
 // a special controller to implements interfaces .
 // making it a self controller tells sts its  CONTROLER that which looks for interfaces taht are attached to /jeep.
-@Service   
+@RestController
 @Slf4j 
 
 
@@ -31,7 +31,7 @@ private JeepSaleService jeepSaleService;
 
 @Override
 	public List <Jeep> fetchJeeps( JeepModel model, String trim) { 
-	log.info("The fetchjeeps method was called with arguments: (model={}, trim = {}", model, trim);
+	log.info("The fetchjeeps method was called with arguments: (model={}, trim ={}", model, trim);
 	return jeepSaleService.fetchJeeps(model,trim);
 	}
 } 

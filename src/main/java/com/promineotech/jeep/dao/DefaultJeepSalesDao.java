@@ -5,29 +5,25 @@ package com.promineotech.jeep.dao;
 //In the new package, create an interface named JeepSalesDao.
 //In the same package, create a class named DefaultJeepSalesDao that implements JeepSalesDao.
 
-import java.util.List;
-import java.util.Map;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import com.mysql.cj.protocol.Resultset;
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
 
 import lombok.extern.slf4j.Slf4j;
 
    
-@Service												// week 15 step 4
+//@Service												// week 15 step 4
 @Component
 @Slf4j
 public class DefaultJeepSalesDao implements JeepSalesDao {
@@ -74,7 +70,7 @@ private NamedParameterJdbcTemplate jdbcTemplate;        // week 15 step 5: In De
 						.build();
 		// formatter: on				
 						
-						
+			
 			
 			
 			}

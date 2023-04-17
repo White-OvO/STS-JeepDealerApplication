@@ -46,7 +46,7 @@ import com.promineotech.jeep.entity.JeepModel;
 		@Sql(scripts = {
     		"classpath:flyway/migrations/V1.0__Jeep_Schema.sql",
     		"classpath:flyway/migrations/V1.1__Jeep_Data.sql"}, 
-    		config = @SqlConfig(encoding = "uft-8"))
+    		config = @SqlConfig(encoding = "utf-8"))
 
 //@SqlConfig(encoding = "utf-8"))+
 		class FetchJeepTest extends FetchJeepTestSupport { 
@@ -102,8 +102,8 @@ import com.promineotech.jeep.entity.JeepModel;
 //	 	Week14: step 2:	Write an AssertJ assertion in the test to assert that the actual list of jeeps returned by the server is the same
 //		as the expected list. Run the test. Demonstrate in your  
 		
-		actual.forEach(jeep -> jeep.setModelPk(null));
-		assertThat(response.getBody()).isEqualTo(expected);
+	//	actual.forEach(jeep -> jeep.setModelPk(null));
+		assertThat(actual).isEqualTo(expected);
 		//fail("Not yet implemented");
 	
 		

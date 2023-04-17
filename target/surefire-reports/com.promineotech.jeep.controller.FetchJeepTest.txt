@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.promineotech.jeep.controller.FetchJeepTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.854 s <<< FAILURE! - in com.promineotech.jeep.controller.FetchJeepTest
+testThatJeepsAreReturnedWhenAValidModelAndTrimAreSupplied  Time elapsed: 0.784 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [flyway/migrations/V1.0__Jeep_Schema.sql]; nested exception is java.io.UnsupportedEncodingException: uft-8
+Caused by: java.io.UnsupportedEncodingException: uft-8
+
