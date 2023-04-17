@@ -3,6 +3,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
+  
+  
+<!-- 	week 14: video: connecting to the database 10:00min. step 6 --> 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -40,20 +43,42 @@
       <optional>true</optional>
     </dependency>
   
-  <!-- OpenAPI dependency ==============================-->
   <dependency>
     <groupId>org.springdoc</groupId>
     <artifactId>springdoc-openapi-ui</artifactId>
     <version>1.6.11</version>
 </dependency>
-
-
-    <dependency>
+ <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
     
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+</dependency>
+
+<!-- step 6 : Add the database dependencies described in the video 
+ 	to the POM file (MySQL driver and Spring Boot Starter JDBC). To find them,
+	nagivate to https://mvnrepository.com/. Search for mysql-connector-j and spring-boot-starter-jdbc. 
+	In the POM file you don't need version numbers for either dependency because the version is included in the Spring Boot Starter Parent.
+==============================-->
+   
+<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+
+  <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>test</scope>
+</dependency>
+
+
 
 
   </dependencies>

@@ -1,3 +1,9 @@
+// interface jeep sales controller is where we put all our documents
+// tells spring hoe to map methods, this only works with the annotation inside 
+// the implementing class not the interface
+
+
+
 package com.promineotech.jeep.controller;
 //	step 13:In this package, create an interface named 
 // STEP 14: Add the class-level annotation @RequestMapping("/jeeps").

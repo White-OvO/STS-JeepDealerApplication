@@ -2,24 +2,37 @@ package com.promineotech.jeep.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
+import com.promineotech.jeep.service.JeepSaleService;
 
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
+//import lombok.extern.slf4j.Slf4j;
 //STEP 19: Add the controller implementation class named DefaultJeepSalesController.  
-@RestController 
+//@RestController 
 // a special controller to implements interfaces .
 // making it a self controller tells sts its  CONTROLER that which looks for interfaces taht are attached to /jeep.
+@Service   
+@Slf4j 
 
-//@slf4j
+
+
 public class DefaultJeepSalesController implements JeepSalesController { 
-
+//@Override
+	
+	
+@Autowired
+private JeepSaleService jeepSaleService;
 
 @Override
 	public List <Jeep> fetchJeeps( JeepModel model, String trim) { 
-	
-	return null;
+	log.info("The fetchjeeps method was called with arguments: (model={}, trim = {}", model, trim);
+	return jeepSaleService.fetchJeeps(model,trim);
 	}
 } 
 
