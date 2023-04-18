@@ -64,7 +64,7 @@ private NamedParameterJdbcTemplate jdbcTemplate;        // week 15 step 5: In De
 						.basePrice(new BigDecimal(rs.getString("base_price")))
 						.modelId(JeepModel.valueOf(rs.getString("model_id")))
 						.modelPk(rs.getLong("model_pk"))
-						.numDoors(rs.getInt("trim_level"))
+						.numDoors(rs.getInt("num_doors"))
 						.trimLevel(rs.getString("trim_level"))
 						.wheelSize(rs.getInt("wheel_size"))
 						.build();

@@ -141,7 +141,7 @@ import com.promineotech.jeep.entity.JeepModel;
 				
 				 
 	     }
-	   /*
+	   
 	   @Test
 	   void assertThatJeepsAreReturnedWhenAvalidModelAndTrimAreSupplied() {
 		   JeepModel model = JeepModel.WRANGLER;
@@ -155,7 +155,7 @@ import com.promineotech.jeep.entity.JeepModel;
 		   
 		   }
 	   
-	   */
+	   
 	   
 	   }
 	     
