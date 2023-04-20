@@ -123,7 +123,7 @@ import com.promineotech.jeep.entity.JeepModel;
 	    	 .trimLevel("Sport")
 	    	 .numDoors(2)
 	    	 .wheelSize(17)
-	    	 .basePrice(new BigDecimal ("28474.00"))
+	    	 .basePrice(new BigDecimal ("28475.00"))
 	    	 .build());
 	    		
 	    

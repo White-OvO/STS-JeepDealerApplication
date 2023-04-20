@@ -32,8 +32,7 @@ import org.springframework.test.context.jdbc.Sql;
 @Sql(	
 		scripts = {
 				"classpath:flyway/migrations/V1.0__Jeep_Schema.sql",
-	    		"classpath:flyway/migrations/V1.1__Jeep_Data.sql"}, 
-			    config = @SqlConfig(encoding = "utf-8"))	
+	    		"classpath:flywnfig(encoding = "utf-8"))	
 @SpringBootTest	
 public class CreateOrderTest {
 @LocalServerPort									//week 16 step 3 : In the test class, add an instance variable named
