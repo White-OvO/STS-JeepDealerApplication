@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 //@RestController
 @Service
 @Slf4j
-public class DefaultJeepSaleService implements JeepSaleService {// week14: step 5
+public class DefaultJeepSalesService implements JeepSalesService {// week14: step 5
 //	Define the fetchJeeps method in the interface. Implement the method in the service class.
 //	Call the method from the controller (make sure the controller returns the list of Jeeps
 //	returned by the service method). The method signature looks like this:
@@ -44,19 +44,19 @@ public class DefaultJeepSaleService implements JeepSaleService {// week14: step 
 	@Autowired
 	private JeepSalesDao jeepSalesDao ; 
 
-@Transactional(readOnly = true)
-	@Override
+//@Transactional(readOnly = true)
+	//@Override
 	 public List<Jeep> fetchJeeps(JeepModel model, String trim){
 	
 			   log.info("The fetchJeeps method was called with arguments: (model= {}, trim=  {})", model , trim);
 			 List<Jeep> jeeps = jeepSalesDao.fetchJeeps(model,  trim);
-			 	if(jeeps.isEmpty()) {
-			 			String msg = String.format("No jeeps found model=%s and trim=%s", model, trim);
-			 			  throw new NoSuchElementException(msg); 
+			 	//if(jeeps.isEmpty()) {
+			 		//	String msg = String.format("No jeeps found model=%s and trim=%s", model, trim);
+			 			//  throw new NoSuchElementException(msg); 
 			 	
-			 	}
+	//		 	}
 	
-	Collections.sort(jeeps);
+//	Collections.sort(jeeps);
 	return jeeps;
 	}
 	

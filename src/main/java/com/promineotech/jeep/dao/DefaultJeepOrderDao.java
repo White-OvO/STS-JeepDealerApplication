@@ -29,11 +29,12 @@ import com.promineotech.jeep.entity.Tire;
 
 @Component
 public class DefaultJeepOrderDao implements JeepOrderDao {
-  @Autowired
+@Autowired
   private NamedParameterJdbcTemplate jdbcTemplate;
 
-  public Order saveOrder(Customer customer, Jeep jeep, Color color, Engine engine, Tire tire,
-    BigDecimal price, List<Option> options) {
+@Override
+public Order saveOrder(Customer customer, Jeep jeep, Color color, Engine engine, Tire tire,
+  BigDecimal price, List<Option> options) {
     
     SqlParams params = generateInsertSql(customer, jeep, color, engine, tire, price);
     
@@ -115,7 +116,7 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
     params.source.addValue("color_fk", color.getColorPK());
     params.source.addValue("engine_fk", engine.getEnginePK());
     params.source.addValue("tire_fk", tire.getTirePK());
-    params.source.addValue("model_fk", jeep.getModelPk());
+    params.source.addValue("model_fk", jeep.getModelPK());
     params.source.addValue("price", price);
     
     return params;
@@ -229,6 +230,7 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
   /**
    * 
    */
+  @Override
   public Optional<Engine> fetchEngine(String engineId) {
     // @formatter:off
     String sql = "" 
@@ -349,7 +351,7 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
       return Jeep.builder()
           .basePrice(rs.getBigDecimal("base_price"))
           .modelId(JeepModel.valueOf(rs.getString("model_id")))
-          .modelPk(rs.getLong("model_pk"))
+          .modelPK(rs.getLong("model_pk"))
           .numDoors(rs.getInt("num_doors"))
           .trimLevel(rs.getString("trim_level"))
           .wheelSize(rs.getInt("wheel_size"))
@@ -384,14 +386,5 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
   class SqlParams {
     String sql;
     MapSqlParameterSource source = new MapSqlParameterSource();
-  
-
-}
-
-@Override
-public Order saveOrder(Customer customer, Jeep jeep, Color color, Engine engine, BigDecimal price, Tire tire,
-		List<Option> options) {
-	// TODO Auto-generated method stub
-	return null;
-}
+  }
 }

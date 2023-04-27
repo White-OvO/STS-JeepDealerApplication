@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
@@ -23,8 +24,8 @@ import com.promineotech.jeep.entity.JeepModel;
 import lombok.extern.slf4j.Slf4j;
 
    
-//@Service												// week 15 step 4
-@Component
+@Service												// week 15 step 4
+//@Component
 @Slf4j
 public class DefaultJeepSalesDao implements JeepSalesDao {
 
@@ -63,7 +64,7 @@ private NamedParameterJdbcTemplate jdbcTemplate;        // week 15 step 5: In De
 				return Jeep.builder() // missing trim level and wheel size
 						.basePrice(new BigDecimal(rs.getString("base_price")))
 						.modelId(JeepModel.valueOf(rs.getString("model_id")))
-						.modelPk(rs.getLong("model_pk"))
+						.modelPK(rs.getLong("model_pk"))
 						.numDoors(rs.getInt("num_doors"))
 						.trimLevel(rs.getString("trim_level"))
 						.wheelSize(rs.getInt("wheel_size"))

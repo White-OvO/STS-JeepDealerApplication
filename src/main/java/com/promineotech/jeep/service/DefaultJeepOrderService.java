@@ -45,7 +45,7 @@ public class DefaultJeepOrderService implements JeepOrderService {
       price = price.add(option.getPrice());
     }
     
-    return jeepOrderDao.saveOrder(customer, jeep, color, engine, price, tire, options);
+    return jeepOrderDao.saveOrder(customer, jeep, color, engine, tire, price,options);
   }
   
   /**
@@ -96,8 +96,7 @@ public class DefaultJeepOrderService implements JeepOrderService {
    * @return
    */
   private Jeep getModel(OrderRequest orderRequest) {
-    return jeepOrderDao
-        .fetchModel(orderRequest.getModel(), orderRequest.getTrim(),
+    return jeepOrderDao.fetchModel(orderRequest.getModel(), orderRequest.getTrim(),
             orderRequest.getDoors())
         .orElseThrow(() -> new NoSuchElementException("Model with ID="
             + orderRequest.getModel() + ", trim=" + orderRequest.getTrim()

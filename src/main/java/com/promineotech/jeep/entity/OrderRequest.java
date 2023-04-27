@@ -17,36 +17,48 @@ import lombok.Data;
 @Data
 
 public class OrderRequest {
+	
 	@NotNull 
 	@Length(max = 30)
-	@Pattern(regexp = "[A-Z_]")
+	@Pattern(regexp = "[\\w\\s]*")
   private String customer;
+	
 	@NotNull 
 	
   private JeepModel model;
+	
 	@NotNull 
 	@Length(max = 30)
-	@Pattern(regexp = "[A-Z_]")
-  
+	@Pattern(regexp = "[\\w\\s]*")  
   private String trim;
+	
 	@Positive
 	@Min(2)
 	@Max(4)
   private int doors;
+	
 	@NotNull 
 	@Length(max = 30)
-	@Pattern(regexp = "[A-Z_]")
+	@Pattern(regexp = "[\\w\\s]*")
   
+	// //w any word and // is any space
 	
   private String color;
+	
 	@NotNull 
 	@Length(max = 30)
-	@Pattern(regexp = "[A-Z_]")
-  
+	@Pattern(regexp = "[\\w\\s]*")
 	
-  private String engine;
-          
-  private String tire;
 
-  private List<String> options;
+  private String engine;
+	
+	
+	  @NotNull
+	  @Length(max = 30)
+	  @Pattern(regexp = "[\\w\\s]*")
+	private String tire;
+
+ 
+	
+	  private List<String> options;
 }

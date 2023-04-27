@@ -13,7 +13,7 @@ import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
 
 
-public interface JeepSaleService {
+public interface JeepSalesService {
 	
 	List<Jeep>fetchJeeps(JeepModel model, String trim);
 			
