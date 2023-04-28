@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.mysql.cj.log.Log;
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
 import com.promineotech.jeep.service.JeepSalesService;
@@ -18,10 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 // a special controller to implements interfaces .
 // making it a self controller tells sts its  CONTROLER that which looks for interfaces taht are attached to /jeep.
 @RestController
+
+
 @Slf4j 
-
-
-
 public class DefaultJeepSalesController implements JeepSalesController { 
 //@Override
 	
@@ -36,7 +37,20 @@ public class DefaultJeepSalesController implements JeepSalesController {
 		return jeepSalesService.fetchJeeps(model, trim);
 
 	}
-}
+
+	@Override
+	public String uploadImag(MultipartFile image, Long jeepPK) {
+		log.debug("image={}, jeepPK={}", image, jeepPK);
+		return jeepSalesService.uploadImage(image, jeepPK);
+	}
+
+//	@Override
+//	public String uploadImage(MultipartFile image, Long jeepPK) {
+//log.debug("image={}, jeepPK={}", image, jeepPK);
+//		return "success!";
+//		
+    }
+//}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

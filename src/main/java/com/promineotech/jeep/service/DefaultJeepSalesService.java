@@ -1,8 +1,16 @@
 package com.promineotech.jeep.service;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.promineotech.jeep.dao.JeepSalesDao;
+import com.promineotech.jeep.entity.Image;
+import com.promineotech.jeep.entity.ImageMimeType;
 
 // week14
 //Step 3 Add a service layer in your application as shown in the videos:
@@ -44,6 +55,58 @@ public class DefaultJeepSalesService implements JeepSalesService {// week14: ste
 	@Autowired
 	private JeepSalesDao jeepSalesDao ; 
 
+	@Transactional
+	@Override
+	public String uploadImage(MultipartFile file, Long modelPK) {
+		
+		
+		String imageId = UUID.randomUUID().toString();
+		//log.debug("Uploading image with ID ={}", imageId);
+		// TODO Auto-generated method stub
+		try(InputStream inputStream = file.getInputStream()){
+			BufferedImage bufferedImage = ImageIO.read(inputStream);
+			
+			
+			//@formatter:off
+			
+			Image image = Image.builder()
+					.modelFK(modelPK)
+					.imageId(imageId)
+					.width(bufferedImage.getHeight())
+					.mimetype(ImageMimeType.IMAGE_JPEG)
+					.name(file.getOriginalFilename())
+					.data(toByteArray(bufferedImage, "jpeg")))
+					.build();
+			
+			//@formatter:on
+			
+		}catch(IOException e) {
+			throw new UncheckedIOException(e);
+			
+		}
+		return null;
+	}
+	
+	
+	
+private byte[] toByteArray(BufferedImage bufferedImage, String renderType) {
+//	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	try {
+		if(!ImageIO.write(bufferedImage, renderType, baos)) {
+			
+		}
+	} catch (IOException e) {
+		throw new UncheckedIOException(e);
+		
+		
+		
+		// TODO Auto-generated catch block
+	//	e.printStackTrace();
+	}
+	}
+
+
+
 //@Transactional(readOnly = true)
 	//@Override
 	 public List<Jeep> fetchJeeps(JeepModel model, String trim){
@@ -59,5 +122,7 @@ public class DefaultJeepSalesService implements JeepSalesService {// week14: ste
 //	Collections.sort(jeeps);
 	return jeeps;
 	}
+
+
 	
 }

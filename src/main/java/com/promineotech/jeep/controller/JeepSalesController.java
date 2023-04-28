@@ -11,9 +11,13 @@ package com.promineotech.jeep.controller;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -111,16 +115,31 @@ public interface JeepSalesController {
 	
 	
 @GetMapping  // get a return of jeep , spring is then going to map the get request it to fetch jeeps method and return a response status.
-
-
 // step 18: Add the @RequestParam annotations to the parameters 
-
-
-
 @ResponseStatus(code = HttpStatus.OK) // if response status is success full, this class jeepsalecontroller , spring is going to map all requests with slash Jeep to this class
 
 			List<Jeep> fetchJeeps(	
 						@RequestParam JeepModel model,            //request param is named JeepModel if the name was not here it would inherit the parameter name
 							@RequestParam String trim);	
 // 	if everything is running we will get a 200 or ok message
+			
+	@PostMapping("/{jeepPK}/image")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	
+	         /*
+			 * @PostMapping("/{jeepPK}/image")
+			 * 
+			 * @ResponseStatus(code = HttpStatus.OK)
+			 */
+	
+	String uploadImag(@RequestParam("image") MultipartFile image, 
+			@PathVariable Long jeepPK);
+	
+	
+	
+//	
+//	String uploadImage(@RequestParam("image") MultipartFile image,
+//			@PathVariable Long jeepPK);
+	
+	
 }
