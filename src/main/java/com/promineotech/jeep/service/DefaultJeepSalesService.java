@@ -75,29 +75,35 @@ public class DefaultJeepSalesService implements JeepSalesService {// week14: ste
 					.width(bufferedImage.getHeight())
 					.mimetype(ImageMimeType.IMAGE_JPEG)
 					.name(file.getOriginalFilename())
-					.data(toByteArray(bufferedImage, "jpeg")))
+					.data(toByteArray(bufferedImage, "jpeg"))
 					.build();
 			
 			//@formatter:on
+			jeepSalesDao.saveImage(image);
 			
+			return imageId;			
 		}catch(IOException e) {
 			throw new UncheckedIOException(e);
 			
 		}
-		return null;
+
 	}
 	
 	
 	
 private byte[] toByteArray(BufferedImage bufferedImage, String renderType) {
-//	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	try {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
 		if(!ImageIO.write(bufferedImage, renderType, baos)) {
+			throw new RuntimeException("could not write to image buffer");
 			
 		}
+		return baos.toByteArray();
+		
 	} catch (IOException e) {
 		throw new UncheckedIOException(e);
-		
+		//e.printStackTrace();
 		
 		
 		// TODO Auto-generated catch block

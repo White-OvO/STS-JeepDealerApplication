@@ -10,6 +10,7 @@ package com.promineotech.jeep.controller;
 
 import java.util.List;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -140,6 +141,8 @@ public interface JeepSalesController {
 //	
 //	String uploadImage(@RequestParam("image") MultipartFile image,
 //			@PathVariable Long jeepPK);
+	@GetMapping("/image/{imageId}")
 	
+	ResponseEntity<byte[]> retrieveImage(@PathVariable String imageId);
 	
 }

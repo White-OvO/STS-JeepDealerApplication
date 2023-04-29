@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.promineotech.jeep.entity.Image;
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
 
@@ -32,7 +33,30 @@ public class DefaultJeepSalesDao implements JeepSalesDao {
 @Autowired
 private NamedParameterJdbcTemplate jdbcTemplate;        // week 15 step 5: In DefaultJeepSalesDao, inject an instance variable of type NamedParameterJdbcTemplate.
 	
+@Override
+public void saveImage(Image image) {
+	String sql = ""
+			+ "INSERT INTO images ("
+			+ "model_fk, image_id,width, height, mime_type, name, data"
+			+ ") VALUES ("
+			+ ":model_fk, :image_id, :width, :height, :mime_type, :name, :data"
+			+ ")";
 	
+	
+	Map<String, Object> params = new HashMap<>();
+	params.put("model_fk", image.getModelFK());
+	params.put("image_id", image.getImageId());
+	params.put("width", image.getWidth());
+	params.put("height", image.getHeight());
+	params.put("mime_type", image.getMimetype().getMimeType());
+	params.put("name", image.getName());
+	params.put("data", image.getData());
+	
+	jdbcTemplate.update(sql, params);
+
+
+
+}	
 	
 @Override
 // 	Week 15: step 3 In the Jeep sales service implementation class, inject the DAO interface as an instance variable. 
@@ -77,5 +101,9 @@ private NamedParameterJdbcTemplate jdbcTemplate;        // week 15 step 5: In De
 			}
 			});
 	 }
+
+
+
+
 }
 
