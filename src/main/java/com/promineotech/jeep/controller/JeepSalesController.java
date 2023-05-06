@@ -142,7 +142,7 @@ public interface JeepSalesController {
 //	String uploadImage(@RequestParam("image") MultipartFile image,
 //			@PathVariable Long jeepPK);
 	@GetMapping("/image/{imageId}")
-	
+	//response entity we can add headers to this entity . which has to be byte
 	ResponseEntity<byte[]> retrieveImage(@PathVariable String imageId);
 	
 }

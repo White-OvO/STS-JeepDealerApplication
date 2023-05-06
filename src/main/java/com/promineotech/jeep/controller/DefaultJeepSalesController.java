@@ -1,13 +1,18 @@
 package com.promineotech.jeep.controller;
 
+//import java.awt.Image;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mysql.cj.log.Log;
+import com.promineotech.jeep.entity.Image;
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
 import com.promineotech.jeep.service.JeepSalesService;
@@ -31,12 +36,31 @@ public class DefaultJeepSalesController implements JeepSalesController {
 	private JeepSalesService jeepSalesService;
 
 	@Override
+	
+	public ResponseEntity<byte[]> retrieveImage(String imageId) {
+		// call the service
+		log.debug("retrieving image with ID ={}",imageId); // call to service
+		Image image = jeepSalesService.retrieveImage(imageId);
+		
+		HttpHeaders headers = new HttpHeaders();
+				headers.add("Content-type", image.getMimeType());
+				headers.add("Content-Length", Integer.toString(image.getData().length));;
+			
+		
+		return RepositoryEntity.ok().headers(headers).body(image.getData());
+	}
+	
+	@Override
+	
 	public List<Jeep> fetchJeeps(JeepModel model, String trim) {
-		log.info("Model = {}, Trim = {}", model, trim);
+		log.info("Model={}, Trim={}", model, trim);
 
 		return jeepSalesService.fetchJeeps(model, trim);
 
 	}
+	
+	
+
 
 	@Override
 	public String uploadImag(MultipartFile image, Long jeepPK) {
@@ -51,6 +75,7 @@ public class DefaultJeepSalesController implements JeepSalesController {
 	
 	}
 
+	
 //	@Override
 //	public String uploadImage(MultipartFile image, Long jeepPK) {
 //log.debug("image={}, jeepPK={}", image, jeepPK);

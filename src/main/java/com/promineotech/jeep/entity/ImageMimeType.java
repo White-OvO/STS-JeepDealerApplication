@@ -21,4 +21,14 @@ public enum ImageMimeType {
 		return mimeType;
 		
 	}
+	
+	
+	public static ImageMimeType fromString(String mimeType) {
+		for(ImageMimeType imt : ImageMimeType.values()) {
+			if(imt.getMimeType().equals(mimeType)) {
+				return imt;
+			}
+		}
+		return null;
+	}
 }

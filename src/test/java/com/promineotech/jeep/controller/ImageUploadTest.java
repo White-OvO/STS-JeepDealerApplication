@@ -63,7 +63,7 @@ class ImageUploadTest {
 	String json = assertImageUpload();
 	//System.out.println("json = " + json);
 	String imageId = ExtractImageId(json);
-assertImageRetrieval(imageId);
+	assertImageRetrieval(imageId);
 
 	
 	

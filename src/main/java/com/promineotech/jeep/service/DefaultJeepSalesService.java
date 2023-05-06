@@ -55,8 +55,21 @@ public class DefaultJeepSalesService implements JeepSalesService {// week14: ste
 	@Autowired
 	private JeepSalesDao jeepSalesDao ; 
 
+	@Transactional(readOnly = true)
+	@Override
+	
+	public Image retrieveImage(String imageId) {
+		// TODO Auto-generated method stub
+		return jeepSalesDao.retrieveImage(imageId).orElseThrow(() -> new NoSuchElementException("Coud not find image with ID=" + imageId));
+	}
+
+
+//
 	@Transactional
 	@Override
+//
+//	
+//	
 	public String uploadImage(MultipartFile file, Long modelPK) {
 		
 		
@@ -128,6 +141,16 @@ private byte[] toByteArray(BufferedImage bufferedImage, String renderType) {
 //	Collections.sort(jeeps);
 	return jeeps;
 	}
+
+
+
+
+
+
+
+
+
+
 
 
 	

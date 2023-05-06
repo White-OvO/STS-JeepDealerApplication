@@ -18,7 +18,7 @@ CREATE TABLE customers (
 );
 
 CREATE TABLE models (
-  model_pk int unsigned NOT NULL AUTO_INCREMENT,
+  model/_pk int unsigned NOT NULL AUTO_INCREMENT,
   model_id enum('GRAND_CHEROKEE', 'CHEROKEE', 'COMPASS', 'RENEGADE', 'WRANGLER', 'GLADIATOR', 'WRANGLER_4XE') NOT NULL,
   trim_level varchar(40) NOT NULL,
   num_doors int NOT NULL,
