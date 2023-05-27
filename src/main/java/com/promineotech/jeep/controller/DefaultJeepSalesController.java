@@ -41,14 +41,18 @@ public class DefaultJeepSalesController implements JeepSalesController {
 		// call the service
 		log.debug("retrieving image with ID ={}",imageId); // call to service
 		Image image = jeepSalesService.retrieveImage(imageId);
-		
+
+
 		HttpHeaders headers = new HttpHeaders();
 				headers.add("Content-type", image.getMimeType());
 				headers.add("Content-Length", Integer.toString(image.getData().length));;
 			
 		
 		return RepositoryEntity.ok().headers(headers).body(image.getData());
-	}
+	}	
+		
+		
+		
 	
 	@Override
 	
@@ -59,6 +63,10 @@ public class DefaultJeepSalesController implements JeepSalesController {
 
 	}
 	
+	
+
+	
+
 	
 
 
@@ -82,6 +90,7 @@ public class DefaultJeepSalesController implements JeepSalesController {
 //		return "success!";
 //		
     }
+    
 //}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
 logging:
   level:
-  root: warm
+  root: warn
   '[com.promineotech]': debug

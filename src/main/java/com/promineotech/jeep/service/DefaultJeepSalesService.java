@@ -59,7 +59,7 @@ public class DefaultJeepSalesService implements JeepSalesService {// week14: ste
 	@Override
 	
 	public Image retrieveImage(String imageId) {
-		// TODO Auto-generated method stub
+	
 		return jeepSalesDao.retrieveImage(imageId).orElseThrow(() -> new NoSuchElementException("Coud not find image with ID=" + imageId));
 	}
 

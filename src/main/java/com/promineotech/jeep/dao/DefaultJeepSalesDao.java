@@ -45,6 +45,8 @@ String sql = ""
 				params.put("image_id", imageId);
 				
 				return jdbcTemplate.query(sql, params, new ResultSetExtractor<>() {
+					
+					
 					@Override
 				public Optional<Image> extractData(ResultSet rs)
 				 	throws SQLException{
@@ -56,7 +58,7 @@ String sql = ""
 									.imageId(rs.getString("image_id"))
 									.width(rs.getInt("weight"))
 									.height(rs.getInt("height"))
-									.mimetype(ImageMimeType.fromString(rs.getString("mime_type")))
+									.mimeType(ImageMimeType.fromString(rs.getString("mime_type")))
 									.name(rs.getString("name"))
 									.data(rs.getBytes("data"))
 									.build());
@@ -97,7 +99,7 @@ public void saveImage(Image image) {
 	params.put("image_id", image.getImageId());
 	params.put("width", image.getWidth());
 	params.put("height", image.getHeight());
-	params.put("mime_type", image.getMimetype().getMimeType());
+	params.put("mime_type", image.getMimeType().getMimeType());
 	params.put("name", image.getName());
 	params.put("data", image.getData());
 	
